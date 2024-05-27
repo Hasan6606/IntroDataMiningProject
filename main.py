@@ -1,7 +1,7 @@
 import pandas as pd  #2.0.2 version was used
 import matplotlib.pyplot as plt #3.7.1 version was used
 import numpy as np #1.23.1 version was used
-
+import seaborn as sns  #0.12.2 version was used
 #This data set have analyzed abaout supermarket anlaysis and Customer Behavior Optimization.
 #ıt have  attributes which are called "Invoice ID,Branch,City,Customer type,Gender,Product line,Unit price,Quantity,Tax 5%,Total,Date,Time,Payment,cogs,gross margin percentage,gross income,Rating"
 #The attributes have ordered as regularly, ıf you want to open dataset for looking attributes. It could not necessary.
