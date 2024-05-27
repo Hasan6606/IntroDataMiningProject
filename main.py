@@ -84,10 +84,11 @@ class DataFilterDisplays:
 # defined data set as documentation
 dataDisplays = DataFilterDisplays("supermarket_sales.csv")
 
-#Defined the return is that which method will run 
-result=dataDisplays.filterCustomerTypeAnalysis()
-#Displated result
-print(result)
+# Run each method independently and display the plots
+print(dataDisplays.filterCityMarketAnalysis())
+print(dataDisplays.filterCustomerTypeAnalysis())
+print(dataDisplays.customer_payment_analyze())
+print(dataDisplays.product_analyze())
 
 
 
