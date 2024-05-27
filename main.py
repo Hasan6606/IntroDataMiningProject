@@ -52,7 +52,34 @@ class DataFilterDisplays:
         plt.legend(title='Customer Type - Gender')
         plt.tight_layout()
         plt.show()
-        
+     
+    def customer_payment_analyze(self):
+      # It is Attributes of 'Customer payment type', 'Gender' 'Customer Type' 'Payment' group and count progresss.
+      #Using Value: Customer Type, Gender, Payment
+        customer_table = self.data.groupby(['Gender', 'Customer type', 'Payment']).size().reset_index(name='Count')
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x='Gender', y='Count', hue='Customer type', data=customer_table, ci=None)
+        plt.title('Customer Analyze by Gender, Customer Type, and Payment')
+        plt.xlabel('Gender')
+        plt.ylabel('Count')
+        plt.legend(title='Customer Type')
+        plt.tight_layout()
+        plt.show()
+
+    def product_analyze(self):
+        # It is Attributes of 'Customer Type', 'City' 'Product line' group and count progresss.
+        #Using Value: Customer Type, City, Product line
+        product_table = self.data.groupby(['Product line', 'City', 'Customer type']).size().reset_index(name='Count')
+        plt.figure(figsize=(12, 8))
+        sns.countplot(x='Product line', hue='Customer type', data=product_table)
+        plt.title('Product Analyze by Product Line, City, and Customer Type')
+        plt.xlabel('Product Line')
+        plt.ylabel('Count')
+        plt.legend(title='Customer Type')
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show()
+   
         
 # defined data set as documentation
 dataDisplays = DataFilterDisplays("supermarket_sales.csv")
