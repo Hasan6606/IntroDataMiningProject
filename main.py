@@ -79,7 +79,31 @@ class DataFilterDisplays:
         plt.xticks(rotation=45)
         plt.tight_layout()
         plt.show()
-   
+   def analyze_female_customers(self):
+        female_data = self.data[self.data['Gender'] == 'Female']
+        female_grouped = female_data.groupby(['Product line', 'Customer type']).size().reset_index(name='Count')
+        female_pivot = female_grouped.pivot(index="Product line", columns="Customer type", values="Count")
+        
+        plt.figure(figsize=(10, 6))
+        female_pivot.plot(kind='bar')
+        plt.title('Products purchased by Female customers by Customer Type')
+        plt.xlabel('Product Line')
+        plt.ylabel('Count')
+        plt.tight_layout()
+        plt.show()
+
+    def analyze_male_customers(self):
+        male_data = self.data[self.data['Gender'] == 'Male']
+        male_grouped = male_data.groupby(['Product line', 'Customer type']).size().reset_index(name='Count')
+        male_pivot = male_grouped.pivot(index="Product line", columns="Customer type", values="Count")
+        
+        plt.figure(figsize=(10, 6))
+        male_pivot.plot(kind='bar')
+        plt.title('Products purchased by Male customers by Customer Type')
+        plt.xlabel('Product Line')
+        plt.ylabel('Count')
+        plt.tight_layout()
+        plt.show()
         
 # defined data set as documentation
 dataDisplays = DataFilterDisplays("supermarket_sales.csv")
@@ -89,7 +113,8 @@ print(dataDisplays.filterCityMarketAnalysis())
 print(dataDisplays.filterCustomerTypeAnalysis())
 print(dataDisplays.customer_payment_analyze())
 print(dataDisplays.product_analyze())
-
+print(dataDisplays.analyze_female_customers())
+print(dataDisplays.analyze_male_customers())
 
 
 
